@@ -146,6 +146,6 @@ section-order = [
 [tool.yardang]
 title = "sphinx-searchlite"
 root = "README.md"
-pages = []
+pages = ["docs/src/how-to.md", "docs/src/reference.md", "docs/src/explanation.md"]
 use-autoapi = true
 
