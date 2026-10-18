@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="API Reference" href="autoapi/index.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="How-to guides" href="docs/src/how-to.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>sphinx-searchlite v0.2.1</title>
@@ -198,6 +198,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/src/how-to.html">How-to guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/src/reference.html">Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/src/explanation.html">Explanation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="autoapi/test_searchlite/index.html">test_searchlite</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/sphinx_searchlite/index.html">sphinx_searchlite</a><input aria-label="Toggle navigation of sphinx_searchlite" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -248,109 +251,40 @@
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="sphinx-searchlite">
 <h1>sphinx-searchlite<a class="headerlink" href="#sphinx-searchlite" title="Link to this heading">¶</a></h1>
-<p>Client-side documentation search for any Sphinx theme. No search service, no
-runtime dependency, no build step beyond Sphinx itself.</p>
+<p>Client-side documentation search for any Sphinx theme. It needs no search
+service, no runtime dependency, and no build step beyond Sphinx itself.</p>
+<p><a class="reference external" href="https://github.com/python-project-templates/sphinx-searchlite/actions/workflows/build.yaml"><img alt="Build Status" src="https://github.com/python-project-templates/sphinx-searchlite/actions/workflows/build.yaml/badge.svg?branch=main&amp;event=push" /></a>
+<a class="reference external" href="https://codecov.io/gh/python-project-templates/sphinx-searchlite"><img alt="codecov" src="https://codecov.io/gh/python-project-templates/sphinx-searchlite/branch/main/graph/badge.svg" /></a>
+<a class="reference external" href="https://github.com/python-project-templates/sphinx-searchlite"><img alt="License" src="https://img.shields.io/github/license/python-project-templates/sphinx-searchlite" /></a>
+<a class="reference external" href="https://pypi.python.org/pypi/sphinx-searchlite"><img alt="PyPI" src="https://img.shields.io/pypi/v/sphinx-searchlite.svg" /></a></p>
+<section id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
+<p>Install the package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-searchlite
+</pre></div>
+</div>
+<p>Add it to <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"sphinx_searchlite"</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>That is the whole setup. A <code class="docutils literal notranslate"><span class="pre">⌘K</span></code> / <code class="docutils literal notranslate"><span class="pre">/</span></code> dialog appears on every page, backed by a
-JSON index emitted next to the build.</p>
-<section id="why-not-sphinx-s-own-search">
-<h2>Why not Sphinx’s own search?<a class="headerlink" href="#why-not-sphinx-s-own-search" title="Link to this heading">¶</a></h2>
-<p>Sphinx ships <code class="docutils literal notranslate"><span class="pre">searchindex.js</span></code>, but it is coupled to <code class="docutils literal notranslate"><span class="pre">searchtools.js</span></code> and to the
-dedicated <code class="docutils literal notranslate"><span class="pre">search.html</span></code> page. There is no supported way to query it from your
-own UI. <code class="docutils literal notranslate"><span class="pre">sphinx-searchlite</span></code> emits plain records instead, so a theme can render
-results however it likes.</p>
+<p>Build your docs and open any page. Press <code class="docutils literal notranslate"><span class="pre">/</span></code> or <code class="docutils literal notranslate"><span class="pre">⌘K</span></code> (<code class="docutils literal notranslate"><span class="pre">Ctrl+K</span></code> on Linux and
+Windows) to open the search dialog. If your theme has its own search box,
+clicking it opens the same dialog.</p>
 </section>
-<section id="ranking">
-<h2>Ranking<a class="headerlink" href="#ranking" title="Link to this heading">¶</a></h2>
-<p>Results are scored with BM25 over two fields:</p>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>the record’s own heading, boosted heavily</p></li>
-<li><p>the title of the page it belongs to, boosted lightly</p></li>
+<li><p><a class="reference internal" href="docs/src/how-to.html"><span class="std std-doc">How-to guides</span></a>: keep the theme’s search box, write your
+own UI, add triggers, and restyle the dialog.</p></li>
+<li><p><a class="reference internal" href="docs/src/reference.html"><span class="std std-doc">Reference</span></a>: configuration options, the JavaScript
+API, the index format, and CSS custom properties.</p></li>
+<li><p><a class="reference internal" href="docs/src/explanation.html"><span class="std std-doc">Explanation</span></a>: why searchlite exists, how ranking
+works, and how the dialog picks its colors.</p></li>
 </ul>
-<p>The distinction matters. Boosting both together makes every section of a page
-inherit that page’s relevance, so searching for a page title surfaces its
-subsections above the page itself.</p>
-<p>The word you are still typing is matched as a prefix <em>in addition to</em> an exact
-match, so <code class="docutils literal notranslate"><span class="pre">install</span></code> also reaches <code class="docutils literal notranslate"><span class="pre">installation</span></code>. All query words must match, so
-extra words narrow the result set.</p>
-</section>
-<section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">¶</a></h2>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">searchlite_index_filename</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">searchlite-index.json</span></code></p></td>
-<td><p>Written to <code class="docutils literal notranslate"><span class="pre">_static/</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">searchlite_max_text</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1200</span></code></p></td>
-<td><p>Characters of body text kept per record.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">searchlite_ui</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p>Ship the bundled dialog. Set <code class="docutils literal notranslate"><span class="pre">False</span></code> to supply your own.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">searchlite_adopt_theme_search</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p>Rebind the theme’s own search box to the dialog. Set <code class="docutils literal notranslate"><span class="pre">False</span></code> to leave it alone.</p></td>
-</tr>
-</tbody>
-</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This library was generated using <a class="reference external" href="https://copier.readthedocs.io/en/stable/">copier</a> from the <a class="reference external" href="https://github.com/python-project-templates/base">Base Python Project Template repository</a>.</p>
 </div>
-</section>
-<section id="working-with-an-existing-theme">
-<h2>Working with an existing theme<a class="headerlink" href="#working-with-an-existing-theme" title="Link to this heading">¶</a></h2>
-<p>Most themes already render a search box wired to Sphinx’s <code class="docutils literal notranslate"><span class="pre">search.html</span></code>. Left
-alone that gives a page two different searches, and the dialog has no visible
-trigger of its own. By default searchlite takes that box over: it is made
-read-only, and focusing, clicking, or submitting it opens the dialog instead.</p>
-<p>The dialog also adopts the page’s own colours, so it follows a theme’s
-light/dark toggle rather than the <code class="docutils literal notranslate"><span class="pre">prefers-color-scheme</span></code> media query — themes
-typically switch on a class or attribute, which that query does not track.</p>
-</section>
-<section id="driving-it-yourself">
-<h2>Driving it yourself<a class="headerlink" href="#driving-it-yourself" title="Link to this heading">¶</a></h2>
-<p>Set <code class="docutils literal notranslate"><span class="pre">searchlite_ui</span> <span class="pre">=</span> <span class="pre">False</span></code> and use the engine directly:</p>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SearchLite</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"> </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="nx">SearchLite</span><span class="p">.</span><span class="nx">indexUrl</span><span class="w"> </span><span class="p">});</span>
-
-<span class="k">await</span><span class="w"> </span><span class="nx">engine</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
-<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">items</span><span class="p">,</span><span class="w"> </span><span class="nx">terms</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">engine</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="s2">"query"</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>Each item is <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">u,</span> <span class="pre">t,</span> <span class="pre">s,</span> <span class="pre">x</span> <span class="pre">}</span></code> — url, page title, section heading, text.
-<code class="docutils literal notranslate"><span class="pre">terms</span></code> includes prefix expansions, so it can be passed to the bundled
-<code class="docutils literal notranslate"><span class="pre">SearchLite.highlight(text,</span> <span class="pre">terms)</span></code> and <code class="docutils literal notranslate"><span class="pre">SearchLite.excerpt(record,</span> <span class="pre">terms)</span></code>
-helpers.</p>
-<p>Add <code class="docutils literal notranslate"><span class="pre">data-searchlite-open</span></code> to any element to make it a trigger.</p>
-</section>
-<section id="styling">
-<h2>Styling<a class="headerlink" href="#styling" title="Link to this heading">¶</a></h2>
-<p>The bundled dialog reads <code class="docutils literal notranslate"><span class="pre">--searchlite-*</span></code> custom properties, so a theme can
-recolour it without overriding rules:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="nd">root</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nv">--searchlite-background</span><span class="p">:</span><span class="w"> </span><span class="mh">#111</span><span class="p">;</span>
-<span class="w">  </span><span class="nv">--searchlite-border</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">--searchlite-muted</span></code>, <code class="docutils literal notranslate"><span class="pre">--searchlite-border</span></code>, and <code class="docutils literal notranslate"><span class="pre">--searchlite-accent</span></code> are
-derived from <code class="docutils literal notranslate"><span class="pre">--searchlite-foreground</span></code>, so setting the background and
-foreground pair is usually enough. Note that the adopted page colours are set
-on the dialog element itself and so win over <code class="docutils literal notranslate"><span class="pre">:root</span></code>; style
-<code class="docutils literal notranslate"><span class="pre">#searchlite-dialog</span></code> directly to override them.</p>
-</section>
-<section id="licence">
-<h2>Licence<a class="headerlink" href="#licence" title="Link to this heading">¶</a></h2>
-<p>Apache-2.0.</p>
 </section>
 </section>
 
@@ -359,12 +293,12 @@ on the dialog element itself and so win over <code class="docutils literal notra
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="autoapi/index.html">
+          <a class="next-page" href="docs/src/how-to.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">API Reference</div>
+                <div class="title">How-to guides</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
