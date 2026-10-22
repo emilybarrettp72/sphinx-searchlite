@@ -73,6 +73,44 @@ Things that frob\\ *nicate*.
 .. py:data:: TIMEOUT
 
    Seconds before the gadget gives up.
+
+.. py:module:: north
+
+.. py:class:: Client
+
+   Northern client.
+
+   .. py:method:: connect()
+
+      Opens the northern connection.
+
+.. py:module:: south
+
+.. py:class:: Client
+
+   Southern client.
+
+   .. py:method:: connect()
+
+      Opens the southern connection.
+
+.. cpp:namespace:: tools
+
+.. cpp:class:: Socket
+
+   Network socket.
+
+   .. cpp:function:: void open()
+
+      Opens the socket.
+
+.. c:struct:: Data
+
+   C structure.
+
+   .. c:member:: int count
+
+      Counts the entries.
 """
 
 
@@ -213,6 +251,25 @@ class TestObjectDescriptions:
         record = next(record for record in records if record.get("s") == "Gadget.spin")
         assert record["u"] == "api.html#Gadget.spin"
         assert "sprocket" in record["x"]
+
+    @pytest.mark.parametrize(
+        ("name", "anchor"),
+        [
+            ("north.Client.connect", "north.Client.connect"),
+            ("south.Client.connect", "south.Client.connect"),
+            ("tools::Socket::open", "_CPPv4N5tools6Socket4openEv"),
+            ("Data.count", "c.Data.count"),
+        ],
+    )
+    def test_object_names_include_module_and_parent_scope(self, records, name, anchor):
+        record = next(record for record in records if record["u"] == f"api.html#{anchor}")
+        assert record["s"] == name
+
+    def test_scoped_names_do_not_depend_on_object_toc_entries(self, tmp_path_factory):
+        out = _build(tmp_path_factory, CONF + "\ntoc_object_entries = False\n", "src_no_object_toc")
+        entries = json.loads((out / "_static" / "searchlite-index.json").read_text())
+        names = {record.get("s") for record in entries}
+        assert {"north.Client.connect", "south.Client.connect", "tools::Socket::open", "Data.count"} <= names
 
     def test_object_text_excludes_nested_objects(self, records):
         record = next(record for record in records if record.get("s") == "Gadget")
